@@ -11,8 +11,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <script src="/js/script.js" defer></script>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-    
+<body class="body">
+    <main class="main">
+        <h1>Lista zadań</h1>
+        <section class="section">
+            <div class="section__div">
+                <h3 class="section__header">Dodaj nowe zadanie</h3>
+            </div>
+            <div class="section__container">
+                <form class="form js-form" action="">
+                    <input class="form__field js-form__field" type="text" placeholder="Co jest do zrobienia?"> <button
+                        class="form__button js-form__button">Dodaj zadanie</button>
+                </form>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__div">
+                <h3 class="section__header">Lista zadań</h3>
+                <div class="js-hiddenButtons section__hiddenButtons"></div>
+            </div>
+
+            <div class="section__container">
+
+                <ul class="js-list list">
+                </ul>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>
