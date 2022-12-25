@@ -1,0 +1,35 @@
+.body {
+    background-color: #eee;
+    font-family: 'Montserrat', sans-serif;
+    word-break: break-word;
+}
+
+.main {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 10px;
+}
+
+.section {
+    margin: 5px 0;
+}
+
+.section__div {
+    background-color: #fff;
+    padding: 10px 20px;
+    margin: 0px 0px 1px 0px;
+    box-shadow: 1px 1px 1px 0px #CCCCCC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section__header {
+    margin: 0;
+}
+
+.section__container {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 1px 0px #CCCCCC;
+}
