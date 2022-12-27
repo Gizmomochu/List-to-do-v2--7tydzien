@@ -1,8 +1,15 @@
 {
-    const tasks = [
+    let tasks = [
         { content: "zadanie" },
         { content: "zadanie1" },
     ];
+
+    let hiddenDoneTasks = false;
+
+    const addNewTask = (newTask) => {
+        tasks = [...tasks, { content: newTask }];
+        render();
+    };
 
     const render = () => {
         const newTask = document.querySelector(".js-form__field");
@@ -12,13 +19,18 @@
 
         for (const task of tasks) {
             htmlString += `
-            <li class="form__li js-list__item">
+            <li class="form__li ${task.done && hiddenDoneTasks ? "form__li--hidden" : ""}">
             <button class="list__button--green js-list__button--green">
             ${task.done ? "<b>V</b>" : ""}
             </button>
-            <span class=${task.done ? "form__li--done" : ""}>${task.content}</span>
+            
+            <span class=${task.done && "form__li--done"}>
+            ${task.content}
+            </span>
+            
             <button class="list__button--red js-list__button--red">
-            <b>X</b></button>
+            <b>X</b>
+            </button>
             </li>`
         };
         document.querySelector(".js-list").innerHTML = htmlString;
@@ -43,20 +55,14 @@
 
     };
 
-    const addNewTask = (fieldValue) => {
-        tasks.push({
-            content: fieldValue,
-        });
-    }
-
     const onFormSubmit = (event) => {
         event.preventDefault();
 
         const input = document.querySelector(".js-form__field");
-        const fieldValue = input.value.trim();
+        const newTask = input.value.trim();
 
-        if (fieldValue !== "") {
-            addNewTask(fieldValue);
+        if (newTask !== "") {
+            addNewTask(newTask);
             render();
         };
         input.focus();
