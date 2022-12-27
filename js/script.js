@@ -12,29 +12,42 @@
     };
 
     const render = () => {
+
+        focusOnField();
+        renderTasks();
+        renderDoneButtons();
+        renderRemoveButtons();
+
+    };
+
+    const focusOnField = () => {
         const newTask = document.querySelector(".js-form__field");
         newTask.focus();
+    };
 
+    const renderTasks = () => {
         let htmlString = "";
 
         for (const task of tasks) {
             htmlString += `
-            <li class="form__li ${task.done && hiddenDoneTasks ? "form__li--hidden" : ""}">
-            <button class="list__button--green js-list__button--green">
-            ${task.done ? "<b>V</b>" : ""}
-            </button>
-            
-            <span class=${task.done && "form__li--done"}>
-            ${task.content}
-            </span>
-            
-            <button class="list__button--red js-list__button--red">
-            <b>X</b>
-            </button>
-            </li>`
+        <li class="form__li ${task.done && hiddenDoneTasks ? "form__li--hidden" : ""}">
+        <button class="list__button--green js-list__button--green">
+        ${task.done ? "<b>V</b>" : ""}
+        </button>
+        
+        <span class=${task.done && "form__li--done"}>
+        ${task.content}
+        </span>
+        
+        <button class="list__button--red js-list__button--red">
+        <b>X</b>
+        </button>
+        </li>`
         };
         document.querySelector(".js-list").innerHTML = htmlString;
+    };
 
+    const renderDoneButtons = () => {
         const doneButtons = document.querySelectorAll(".js-list__button--green");
 
         doneButtons.forEach((doneButton, index) => {
@@ -43,7 +56,9 @@
                 render();
             });
         });
+    };
 
+    const renderRemoveButtons = () => {
         const removeButtons = document.querySelectorAll(".js-list__button--red");
 
         removeButtons.forEach((removeButtons, index) => {
@@ -52,7 +67,6 @@
                 render();
             });
         });
-
     };
 
     const onFormSubmit = (event) => {
