@@ -23,25 +23,12 @@
     border-radius: 0%;
     background-color: red;
     color: white;
+    width: 26px;
+    height: 26px;
 }
 
 .list__button--red:hover {
     border: 2px solid hsl(0, 100%, 40%);
     border-radius: 0%;
     background-color: hsl(0, 100%, 40%);
-}
-
-.list__image--green {
-    width: 10px;
-    height: 10px;
-    display: block;
-    margin: 0 auto;
-    /* background-color: #bacff4; */
-}
-
-.list__image--red {
-    width: 10px;
-    height: 10px;
-    display: block;
-    margin: 0 auto;
 }
