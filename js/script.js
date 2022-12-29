@@ -19,7 +19,7 @@
                 hideTaskDone();
             });
         };
-        
+
     };
 
     const toggleAllTasksDone = () => {
@@ -30,7 +30,7 @@
         render();
     };
 
-    const markAllTasks = () => {
+    const markAllTasksEvent = () => {
         const toggleTasksDone = document.querySelector(".js-markAll");
 
         if (toggleTasksDone) {
@@ -40,7 +40,7 @@
         };
     };
 
-    const renderButtonsHideAndMarkAll = () => {
+    const renderButtonsHideTasksAndMarkAll = () => {
         let htmlStringButtons = "";
 
         if (tasks.length > 0) {
@@ -58,21 +58,19 @@
         document.querySelector(".js-hiddenButtons").innerHTML = htmlStringButtons;
     };
 
-
     const addNewTask = (newTask) => {
         tasks = [...tasks, { content: newTask }];
         render();
     };
 
     const render = () => {
-
         focusOnField();
-        renderTasks();
-        renderDoneButtons();
-        renderRemoveButtons();
-        renderButtonsHideAndMarkAll();
+        renderButtonsHideTasksAndMarkAll();
         hideTaskButtonEvent();
-        markAllTasks();
+        markAllTasksEvent();      
+        renderTasksAndDoneRemoveButtons();
+        DoneButtonsEvent();
+        RemoveButtonsEvent();
 
     };
 
@@ -81,7 +79,7 @@
         newTask.focus();
     };
 
-    const renderTasks = () => {
+    const renderTasksAndDoneRemoveButtons = () => {
         let htmlString = "";
 
         for (const task of tasks) {
@@ -103,24 +101,39 @@
         document.querySelector(".js-list").innerHTML = htmlString;
     };
 
-    const renderDoneButtons = () => {
+    const doneTaskEvent = (index) => {
+        tasks = [
+            ...tasks.slice(0, index),
+            {
+                ...tasks[index],
+                done: !tasks[index].done,
+            },
+            ...tasks.slice(index + 1),
+        ];
+        render();
+    };
+
+    const DoneButtonsEvent = () => {
         const doneButtons = document.querySelectorAll(".js-list__button--green");
 
         doneButtons.forEach((doneButton, index) => {
             doneButton.addEventListener("click", () => {
-                tasks[index].done = !tasks[index].done;
-                render();
+                doneTaskEvent(index);
             });
         });
     };
 
-    const renderRemoveButtons = () => {
+    const removeTaskEvent = (index) => {
+        tasks = [...tasks.slice(0, index), ...tasks.slice(index + 1)];
+        render();
+    };
+
+    const RemoveButtonsEvent = () => {
         const removeButtons = document.querySelectorAll(".js-list__button--red");
 
         removeButtons.forEach((removeButtons, index) => {
             removeButtons.addEventListener("click", () => {
-                tasks.splice(index, 1);
-                render();
+                removeTaskEvent(index);
             });
         });
     };
@@ -133,18 +146,15 @@
 
         if (newTask !== "") {
             addNewTask(newTask);
-            render();
         };
         input.focus();
         input.value = "";
     };
 
     const init = () => {
-
         render();
         const form = document.querySelector(".js-form");
         form.addEventListener("submit", onFormSubmit);
-
     };
 
     init();
