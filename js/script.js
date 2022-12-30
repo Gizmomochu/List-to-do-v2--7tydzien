@@ -67,7 +67,7 @@
         focusOnField();
         renderButtonsHideTasksAndMarkAll();
         hideTaskButtonEvent();
-        markAllTasksEvent();      
+        markAllTasksEvent();
         renderTasksAndDoneRemoveButtons();
         DoneButtonsEvent();
         RemoveButtonsEvent();
@@ -141,14 +141,13 @@
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        const input = document.querySelector(".js-form__field");
-        const newTask = input.value.trim();
+        const newTask = document.querySelector(".js-form__field");
 
-        if (newTask !== "") {
-            addNewTask(newTask);
+        if (newTask.value.trim() !== "") {
+            addNewTask(newTask.value);
         };
-        input.focus();
-        input.value = "";
+        focusOnField();
+        newTask.value = "";
     };
 
     const init = () => {
