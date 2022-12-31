@@ -9,16 +9,24 @@
     padding: 8px 5px;
     border: 0px;
     flex-basis: 20%;
+    transition: 0.5s;
 }
 
 .form__button:hover {
     background-color: hsl(180, 100%, 20%);
+    transform: scale(1.1);
 }
 
 .form__field {
     padding: 5px;
     border: #ccc solid 2px;
     flex-basis: 78%;
+    transition: 1s;
+}
+
+.form__field:hover {
+    border: hsl(0, 0%, 70%) solid 2px;
+    transform: scale(1.02);
 }
 
 .form__li {
@@ -43,6 +51,15 @@
     border: none;
     background-color: white;
     color: teal;
+    transition: 1s;
+}
+
+.buttons__hidden:hover {
+    transform: scale(1.05);
+}
+
+.buttons__hidden:disabled {
+    color: rgb(122, 122, 122);
 }
 
 @media (max-width: 767px) {
