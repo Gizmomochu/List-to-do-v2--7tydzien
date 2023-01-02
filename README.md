@@ -1,10 +1,10 @@
 # Order list app ver. 2
 
-![Order_list]()
+![Order_list](media/Listv2.gif)
 
 ## Website app address
 
-[DEMO](https://gizmomochu.github.io/List-to-do-v2--7tydzien/)
+[DEMO](https://gizmomochu.github.io/ListV2/)
 
 ## Description
 
